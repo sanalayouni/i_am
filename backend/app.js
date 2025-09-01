@@ -4,13 +4,16 @@ const Personnes = require("./models/personnes");
 const QRCode = require('qrcode');
 const app = express()
 const port = 3000
+//import routes
 const entreprisesRoutes = require("./routes/entrepriseRoute");
 const personnesRoutes = require("./routes/personneRoute");
+const utilisateurRoutes = require("./routes/utilisateurRoute");
 // Connect Database
 connectDB();
 app.use(express.json()); // allow JSON body parsing
-app.use("/", entreprisesRoutes);
-app.use("/", personnesRoutes);
+app.use("/entreprises", entreprisesRoutes);
+app.use("/personnes", personnesRoutes);
+app.use("/utilisateurs", utilisateurRoutes);
 
 app.get("/", async (req, res) => {
   try {
