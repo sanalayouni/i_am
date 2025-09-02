@@ -1,3 +1,5 @@
+require('dotenv').config();
+console.log("JWT SECRET:", process.env.SECRET);
 const express = require('express')
 const connectDB = require("./config/db");
 const Personnes = require("./models/personnes");
@@ -8,12 +10,14 @@ const port = 3000
 const entreprisesRoutes = require("./routes/entrepriseRoute");
 const personnesRoutes = require("./routes/personneRoute");
 const utilisateurRoutes = require("./routes/utilisateurRoute");
+const userRoutes = require("./routes/user");
 // Connect Database
 connectDB();
 app.use(express.json()); // allow JSON body parsing
 app.use("/entreprises", entreprisesRoutes);
 app.use("/personnes", personnesRoutes);
 app.use("/utilisateurs", utilisateurRoutes);
+app.use("/user", userRoutes);
 
 app.get("/", async (req, res) => {
   try {
