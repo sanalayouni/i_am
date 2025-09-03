@@ -7,17 +7,17 @@ const QRCode = require('qrcode');
 const app = express()
 const port = 3000
 //import routes
-const entreprisesRoutes = require("./routes/entrepriseRoute");
+const entreprisesRoutes = require("./routes/entrepriseRoutes");
 const personnesRoutes = require("./routes/personneRoute");
 const utilisateurRoutes = require("./routes/utilisateurRoute");
 const userRoutes = require("./routes/user");
 // Connect Database
 connectDB();
 app.use(express.json()); // allow JSON body parsing
-app.use("/entreprises", entreprisesRoutes);
-app.use("/personnes", personnesRoutes);
-app.use("/utilisateurs", utilisateurRoutes);
-app.use("/user", userRoutes);
+app.use("/api/entreprises", entreprisesRoutes);
+app.use("/api/personnes", personnesRoutes);
+app.use("/api/utilisateurs", utilisateurRoutes);
+app.use("/api/user", userRoutes);
 
 app.get("/", async (req, res) => {
   try {

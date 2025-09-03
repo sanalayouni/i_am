@@ -2,25 +2,29 @@ const express = require("express");
 const router = express.Router();
 const Utilisateur = require("../models/utilisateurs");
 const utilisateursController = require("../controllers/utilisateurController");
+const requireAuth = require("../middlewares/authMiddleware");
+
+//private routes
+
 // Créer un nouvel utilisateur
-router.post("/", utilisateursController.createUtilisateur);
+router.post("/", requireAuth,utilisateursController.createUtilisateur);
 
 // Récupérer tous les utilisateurs
-router.get("/", utilisateursController.getAllUtilisateurs);
+router.get("/",requireAuth, utilisateursController.getAllUtilisateurs);
     
 
 
 // Récupérer un utilisateur par ID
-router.get("/:id", utilisateursController.getUtilisateurById);
+router.get("/:id",requireAuth, utilisateursController.getUtilisateurById);
 
     
 
 // UPDATE - update utilisateur by ID
-router.put("/:id",utilisateursController.updateUtilisateurById);
+router.put("/:id",requireAuth,utilisateursController.updateUtilisateurById);
   
 // DELETE - delete utilisateur by ID
 
-router.delete("/:id", utilisateursController.deleteUtilisateurById);
+router.delete("/:id",requireAuth, utilisateursController.deleteUtilisateurById);
   
 module.exports = router;
 
