@@ -1,13 +1,25 @@
 //import model
 
 const Personne = require("../models/personnes");
-
+const generateVCard = require("../utils/VCard");
 // Create and Save a new Personne
 exports.createPersonne = async (req, res) => {
   try {
       const personne = new Personne(req.body);
       const savedPersonne = await personne.save();
-      res.status(201).json({ message:"personne ajouteé",savedPersonne});
+      //  Generate vCard QR Code after saving person
+    const qrCodeImage = await generateVCard(savedPersonne);
+    // Save QR code in DB
+    savedPersonne.qrCode = qrCodeImage;
+    await savedPersonne.save();
+
+    // Send response with both person data & QR code
+    res.status(201).json({ 
+      message: "Personne ajoutée",
+      savedPersonne,
+      qrCode: qrCodeImage
+    });
+      
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
@@ -37,8 +49,14 @@ exports.createPersonne = async (req, res) => {
   exports.updatePersonneById = async (req, res) => {
     try {
         const updatedPersonne = await Personne.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        // ✅ Generate vCard QR Code after updating person
+         const qrCodeImage = await generateVCard(updatedPersonne);
+        // Save QR code in DB
+        savedPersonne.qrCode = qrCodeImage;
+        await savedPersonne.save();
+ 
         if (!updatedPersonne) return res.status(404).json({ message: "Personne not found" });
-        res.json({ message:"personne modifieé",updatedPersonne});
+        res.json({ message:"personne modifieé",updatedPersonne, qrCode: qrCodeImage});
       } catch (error) {
         res.status(400).json({ message: error.message });
       }

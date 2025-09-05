@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const QRCode = require("qrcode");
 
 const personnesSchema = new mongoose.Schema(
   {
@@ -10,6 +11,7 @@ const personnesSchema = new mongoose.Schema(
     email:     { type: String, trim: true, lowercase: true },
     localisation:  { type: String, trim: true },                
     profileImage: String,
+    qrCode: String,// Store QR code as base64 string
     verified: { type: Boolean, default: false },
     socialLinks: {
       facebook: String,
