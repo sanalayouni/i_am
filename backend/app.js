@@ -9,15 +9,13 @@ const port = 3000
 //import routes
 const entreprisesRoutes = require("./routes/entrepriseRoutes");
 const personnesRoutes = require("./routes/personneRoute");
-const utilisateurRoutes = require("./routes/utilisateurRoute");
 const userRoutes = require("./routes/user");
 // Connect Database
 connectDB();
 app.use(express.json()); // allow JSON body parsing
-app.use("/api/entreprises", entreprisesRoutes);
-app.use("/api/personnes", personnesRoutes);
-app.use("/api/utilisateurs", utilisateurRoutes);
-app.use("/api/user", userRoutes);
+app.use("i_am/api/entreprises", entreprisesRoutes);
+app.use("i_am/api/personnes", personnesRoutes);
+app.use("i_am/api/user", userRoutes);
 
 app.get("/", async (req, res) => {
   try {
