@@ -8,7 +8,8 @@ const personnesSchema = new mongoose.Schema(
     poste:  { type: String, required: true, trim: true }, 
     entreprise:   { type: mongoose.Schema.Types.ObjectId, ref: "entreprises" },
     telephone:     { type: String, trim: true },
-    email:     { type: String, trim: true, lowercase: true },
+    email:     { type: String, trim: true, lowercase: true,unique: true,match: [/^\S+@\S+\.\S+$/, "Please use a valid email address"]
+ },
     localisation:  { type: String, trim: true },                
     profileImage: String,
     qrCode: String,// Store QR code as base64 string
