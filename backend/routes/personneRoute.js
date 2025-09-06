@@ -12,9 +12,13 @@ const {requireAuth,requireAdmin} = require("../middlewares/authMiddleware");// p
 // READ - get all personnes
 router.get("/", personneController.getAllPersonnes);
 
+// SEARCH - search personnes by name, number,email
+router.get("/search", personneController.searchPersonnes);
+  
+
 // READ - get personne by ID
 router.get("/:id", personneController.getPersonneById);
-  
+
 //private routes
 // CREATE - add new personne
 router.post("/",requireAuth,requireAdmin, personneController.createPersonne);
