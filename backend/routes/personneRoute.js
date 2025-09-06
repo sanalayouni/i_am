@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Personne = require("../models/personnes");
 const personneController = require("../controllers/personneController");
-const requireAuth = require("../middlewares/authMiddleware");
+const {requireAuth,requireAdmin} = require("../middlewares/authMiddleware");// pour les routes privées
+//const requireAdmin = require("../middleware/requireAdmin");// pour les routes admin
 
 
 
@@ -16,13 +17,13 @@ router.get("/:id", personneController.getPersonneById);
   
 //private routes
 // CREATE - add new personne
-router.post("/",requireAuth, personneController.createPersonne);
+router.post("/",requireAuth,requireAdmin, personneController.createPersonne);
   
 // UPDATE - update personne by ID
-router.put("/:id", requireAuth,personneController.updatePersonneById);
+router.put("/:id", requireAuth,requireAdmin,personneController.updatePersonneById);
   
 
 // DELETE - delete personne by ID
-router.delete("/:id", requireAuth,personneController.deletePersonneById);
+router.delete("/:id", requireAuth,requireAdmin,personneController.deletePersonneById);
   
 module.exports = router;

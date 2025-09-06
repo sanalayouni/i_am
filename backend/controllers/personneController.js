@@ -47,20 +47,34 @@ exports.createPersonne = async (req, res) => {
   };
   // Update a personne identified by the personneId in the request
   exports.updatePersonneById = async (req, res) => {
-    try {
-        const updatedPersonne = await Personne.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        // ✅ Generate vCard QR Code after updating person
-         const qrCodeImage = await generateVCard(updatedPersonne);
-        // Save QR code in DB
-        savedPersonne.qrCode = qrCodeImage;
-        await savedPersonne.save();
- 
-        if (!updatedPersonne) return res.status(404).json({ message: "Personne not found" });
-        res.json({ message:"personne modifieé",updatedPersonne, qrCode: qrCodeImage});
-      } catch (error) {
-        res.status(400).json({ message: error.message });
-      }
-    };
+  try {
+    // Step 1: Find the existing person
+    const personne = await Personne.findById(req.params.id);
+    if (!personne) {
+      return res.status(404).json({ message: "Personne not found" });
+    }
+
+    // Step 2: Update fields from req.body
+    Object.assign(personne, req.body);
+
+    // Step 3: Generate the QR Code
+    const qrCodeImage = await generateVCard(personne);
+    personne.qrCode = qrCodeImage;
+
+    // Step 4: Save only once
+    const updatedPersonne = await personne.save();
+
+    res.json({
+      message: "Personne modifiée",
+      updatedPersonne,
+      
+    });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+
   // Delete a personne with the specified personneId in the request
   exports.deletePersonneById = async (req, res) => {
     try {
