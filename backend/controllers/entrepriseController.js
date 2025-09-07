@@ -58,3 +58,20 @@ exports.deleteEntreprise = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+// Search personnes by name, telephone, or email
+exports.searchEntreprise = async (req, res) => {
+  try {
+    const { nom,telephone, email } = req.query;
+
+    // Build dynamic query object
+    const query = {};
+    if (nom) query.nom = new RegExp(nom, "i"); // case-insensitive partial match
+    if (telephone) query.telephone = new RegExp(telephone, "i");
+    if (email) query.email = new RegExp(email, "i");
+
+    const results = await Entreprise.find(query);
+    res.json(results);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

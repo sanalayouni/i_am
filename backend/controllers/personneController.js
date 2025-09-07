@@ -90,10 +90,11 @@ exports.createPersonne = async (req, res) => {
 // Search personnes by name, telephone, or email
 exports.searchPersonnes = async (req, res) => {
   try {
-    const { nom, telephone, email } = req.query;
+    const { nom, prenom,telephone, email } = req.query;
 
     // Build dynamic query object
     const query = {};
+    if (prenom) query.prenom = new RegExp(prenom, "i"); 
     if (nom) query.nom = new RegExp(nom, "i"); // case-insensitive partial match
     if (telephone) query.telephone = new RegExp(telephone, "i");
     if (email) query.email = new RegExp(email, "i");

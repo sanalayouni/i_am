@@ -5,8 +5,11 @@ const {requireAuth,requireAdmin} = require("../middlewares/authMiddleware");
 //const requireAdmin = require("../middleware/requireAdmin");
 
 // Public routes
+router.get("/search", entrepriseController.searchEntreprise);
 router.get("/", entrepriseController.getAllEntreprises);
+
 router.get("/:id", entrepriseController.getEntrepriseById);
+
 
 // Private routes (protected by middleware)
 router.post("/", requireAuth,requireAdmin, entrepriseController.addEntreprise);

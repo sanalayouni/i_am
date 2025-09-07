@@ -13,9 +13,9 @@ const userRoutes = require("./routes/user");
 // Connect Database
 connectDB();
 app.use(express.json()); // allow JSON body parsing
-app.use("/i_am/api/entreprises", entreprisesRoutes);
-app.use("/i_am/api/personnes", personnesRoutes);
-app.use("/i_am/api/user", userRoutes);
+app.use("/i_am/entreprises", entreprisesRoutes);
+app.use("/i_am/personnes", personnesRoutes);
+app.use("/i_am/user", userRoutes);
 
 
 
