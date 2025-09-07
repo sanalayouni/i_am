@@ -3,20 +3,20 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)  
 [![Backend](https://img.shields.io/badge/Backend-Node.js%20%7C%20Express%20%7C%20MongoDB-green.svg)]()  
 
-##  Description
+## Description
 
 The **i_am** project is a backend REST API built with **Node.js, Express, and MongoDB**.  
 It provides endpoints for managing:  
 
--  **Workers (Personnes)**  
--  **Companies (Entreprises)**  
--  **Users & Authentication**  
+- **Workers (Personnes)**  
+- **Companies (Entreprises)**  
+- **Users & Authentication**  
 
 It also includes **JWT authentication** and **role-based access control**.  
 
 ---
 
-##  Features
+## Features
 
 - Manage **workers** (CRUD)  
 - Manage **companies** (CRUD)  
@@ -27,64 +27,82 @@ It also includes **JWT authentication** and **role-based access control**.
 
 ---
 
-##  Installation
+## Installation
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-username/i_am.git
-   cd i_am
-2. **Install dependencies**
+```bash
+git clone https://github.com/your-username/i_am.git
+cd i_am
+Install dependencies
+
+bash
+Copier le code
 npm install
-3. **Configure environment variables**
+Configure environment variables
 Create a .env file in the root of your project:
+
+env
+Copier le code
 SECRET=your-secret-key
-4. **Run the server**
+Run the server
+
+bash
+Copier le code
 npm start
-# API Endpoints
- Users & Authentication (/i_am/user)
-- POST /login → Login
+API Endpoints
+Users & Authentication (/i_am/users)
+POST /login → Login
 
-- POST /signup → Register new user
+POST /signup → Register new user
 
-- GET / → Get all users (Admin only)
+GET / → Get all users (Admin only)
 
-- GET /:id → Get user by ID (Admin only)
+GET /:id → Get user by ID (Admin only)
 
-- PUT /:id → Update user (Admin only)
+PUT /:id → Update user (Admin only)
 
-- DELETE /:id → Delete user (Admin only)
+DELETE /:id → Delete user (Admin only)
 
-- PATCH /:id/upgrade → Upgrade user to admin (Admin only)
+PATCH /:id/upgrade → Upgrade user to admin (Admin only)
+
 Workers (Personnes) (/i_am/personnes)
-- GET / → Get all workers
+GET / → Get all workers
 
-- GET /search → Search workers
+GET /search → Search workers
 
-- GET /:id → Get worker by ID
+GET /:id → Get worker by ID
 
-- POST / → Create worker (Admin only)
+POST / → Create worker (Admin only)
 
-- PUT /:id → Update worker (Admin only)
+PUT /:id → Update worker (Admin only)
 
-- DELETE /:id → Delete worker (Admin only)
+DELETE /:id → Delete worker (Admin only)
+
 Companies (Entreprises) (/i_am/entreprises)
-- GET / → Get all companies
+GET / → Get all companies
 
-- GET /search → Search companies
+GET /search → Search companies
 
-- GET /:id → Get company by ID
+GET /:id → Get company by ID
 
-- POST / → Create company (Admin only)
+POST / → Create company (Admin only)
 
-- PUT /:id → Update company (Admin only)
+PUT /:id → Update company (Admin only)
 
-- DELETE /:id → Delete company (Admin only)
-# Example Request
-- Create a Worker (Personne):
+DELETE /:id → Delete company (Admin only)
+
+Example Request
+Create a Worker (Personne):
+
+http
+Copier le code
 POST /i_am/personnes
 Content-Type: application/json
 Authorization: Bearer <token>
-- Body:
+Body:
+
+json
+Copier le code
 {
   "nom": "Doe",
   "prenom": "John",
@@ -92,9 +110,11 @@ Authorization: Bearer <token>
   "email": "johndoe@email.com",
   "telephone": "+21612345678"
 }
-# Contact
- Author: sana layouni
+Contact
+Author: Sana Layouni
 
- Email: sanalayouni20@gmail.com
+Email: sanalayouni20@gmail.com
 
- LinkedIn: www.linkedin.com/in/sana-layouni-648700338
+LinkedIn: www.linkedin.com/in/sana-layouni-648700338
+
+
