@@ -5,7 +5,7 @@ const connectDB = require("./config/db");
 const Personnes = require("./models/personnes");
 const QRCode = require('qrcode');
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000;
 //import routes
 const entreprisesRoutes = require("./routes/entrepriseRoutes");
 const personnesRoutes = require("./routes/personneRoute");
