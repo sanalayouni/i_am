@@ -1,0 +1,42 @@
+.Intro {
+  
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.Intro-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+.Intro-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .Intro {
+    padding: 3rem 1.5rem;
+  }
+  
+  .Intro-title {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 480px) {
+  .Intro {
+    padding: 2rem 1rem;
+  }
+  
+  .Intro-title {
+    font-size: 1.6rem;
+  }
+}

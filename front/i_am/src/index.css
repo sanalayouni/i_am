@@ -1,0 +1,33 @@
+@import "tailwindcss";
+/* index.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: sans-serif;
+
+  /* main gradient background */
+  background: linear-gradient(180deg, #1A3C78 0%, #0A1F44 84%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* glowing circle effect */
+body::before {
+  content: "";
+  position: absolute;
+  top:30%;
+  right: -500px; /* adjust to move more left/right */
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: #397CF0;
+  filter: blur(200px); /* makes it soft like Figma */
+  opacity: 0.6; /* transparency */
+  z-index: 0; /* behind content */
+}
