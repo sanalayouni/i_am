@@ -1,6 +1,8 @@
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaDownload } from "react-icons/fa";
-import verif from "../assets/verified.png"
+import verif from "../assets/verified.png";
+
 function CompanyCard() {
+  
   return (
     <div className="min-h-screen flex items-center justify-center ">
       <div className="bg-white rounded-2xl shadow-lg p-10 w-[600px] relative">

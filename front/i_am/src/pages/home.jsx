@@ -6,9 +6,12 @@ import user from '../assets/user.png';
 import Carte from '../components/mini_carte';
 import Button from '../components/button';
 
+
 function Home() {
+
   return (
     <>
+
     <div className=" justify-center items-center">
       {/* Header Section */}
       <div className="flex items-center justify-between ">
@@ -26,12 +29,12 @@ function Home() {
       <Intro />
 
       {/* Search Bar */}
-      
+
         <SearchBar />
-      
+
 
       {/* Favorites Section */}
-      
+
         <h2 className="font-semibold text-white mb-7 text-left text-3xl">
           Vos favoris
         </h2>
@@ -44,6 +47,7 @@ function Home() {
           />
         </div>
       </div>
+
     </>
   );
 }

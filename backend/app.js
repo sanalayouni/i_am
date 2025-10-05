@@ -1,11 +1,15 @@
+
 require('dotenv').config();
 console.log("JWT SECRET:", process.env.SECRET);
 const express = require('express')
 const connectDB = require("./config/db");
 const Personnes = require("./models/personnes");
 const QRCode = require('qrcode');
-const app = express()
+const app = express();
+const cors = require('cors');
 const port = process.env.PORT || 3000;
+app.use(cors());
+
 //import routes
 const entreprisesRoutes = require("./routes/entrepriseRoutes");
 const personnesRoutes = require("./routes/personneRoute");
