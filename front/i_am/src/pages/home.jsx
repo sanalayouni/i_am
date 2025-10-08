@@ -16,7 +16,7 @@ function Home() {
       {/* Header Section */}
       <div className="flex items-center justify-between ">
         {/* Logo */}
-        <img src={logo} alt="Logo" className="w-20 h-20" />
+        <img src={logo} alt="Logo" className="w-30 h-30" />
 
         {/* Buttons */}
         <div className="flex gap-4">
