@@ -5,36 +5,44 @@ import '../components/logo.css';
 import user from '../assets/user.png';
 import Carte from '../components/mini_carte';
 import Button from '../components/button';
-
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+  const navigate = useNavigate(); // ✅ Move this outside the return
 
   return (
-    <>
-
-    <div className=" justify-center items-center">
-      {/* Header Section */}
-      <div className="flex items-center justify-between ">
-        {/* Logo */}
-        <img src={logo} alt="Logo" className="w-30 h-30" />
-
-        {/* Buttons */}
-        <div className="flex gap-4">
-          <Button label="Inscription" variant="secondary" />
-          <Button label="Connexion" variant="primary" />
-        </div>
+    <div className="min-h-screen text-white relative">
+      {/* Logo outside content */}
+      <div className="absolute top-2 -left-20 z-10">
+        <img src={logo} alt="Logo" className="h-40 w-40 object-contain" />
       </div>
 
-      {/* Intro Section */}
-      <Intro />
+      {/* Main content wrapper */}
+      <div className="max-w-screen-xl mx-auto px-10 pt-5">
+        {/* Header Section */}
+        <div className="flex items-center justify-between mb-10">
+          {/* Buttons */}
+          <div className="flex gap-4 ml-auto">
+            <Button
+              label="Inscription"
+              variant="secondary"
+              onClick={() => navigate('/signup')}
+            />
+            <Button
+              label="Connexion"
+              variant="primary"
+              onClick={() => navigate('/login')}
+            />
+          </div>
+        </div>
 
-      {/* Search Bar */}
+        {/* Intro Section */}
+        <Intro />
 
+        {/* Search Bar */}
         <SearchBar />
 
-
-      {/* Favorites Section */}
-
+        {/* Favorites Section */}
         <h2 className="font-semibold text-white mb-7 text-left text-3xl">
           Vos favoris
         </h2>
@@ -44,11 +52,12 @@ function Home() {
             name="Marie Leroy"
             role="Directrice Marketing"
             isFavorite={true}
+            entreprise="Tagmanya"
+            entrepriseUrl="https://tagmanya.com"
           />
         </div>
       </div>
-
-    </>
+    </div>
   );
 }
 
