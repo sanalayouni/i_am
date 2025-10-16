@@ -113,10 +113,9 @@ Authorization: Bearer <token>
 ---
 
 ## Contact
-
 **Supervisor:** Hafedh Nouir  
-**Email:** Contact@tagmanya.com   
-**LinkedIn:** [Tagmanya]([https://www.linkedin.com/in/tagmanya](https://www.linkedin.com/company/tagmanya/))
+**Email:** Contact@tagmanya.com  
+**LinkedIn:** [Tagmanya](https://www.linkedin.com/company/tagmanya/?originalSubdomain=fr)
 
 **Author:** Sana Layouni  
 **Email:** sanalayouni20@gmail.com  
